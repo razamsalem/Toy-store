@@ -1,19 +1,19 @@
+import { toyService } from "../../services/toy.service.js"
+
 export const SET_TOYS = 'SET_TOYS'
 export const REMOVE_TOY = 'REMOVE_TOY'
 export const ADD_TOY = 'ADD_TOY'
 export const UPDATE_TOY = 'UPDATE_TOY'
 export const UNDO_TOY = 'UNDO_TOY'
 
-// export const SET_FILTER = 'SET_FILTER'
-// export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
+export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
     toys: [],
     lastToys: [],
-    isLoading: false
-    // filter: 'all',
-    // searchQuery: '',
+    isLoading: false,
+    filterBy: toyService.getDefaultFilter(),
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -43,12 +43,9 @@ export function toyReducer(state = initialState, action = {}) {
             toys = [...state.lastToys]
             return { ...state, toys }
 
-        //Filter
-        // case SET_FILTER:
-        //     return { ...state, filter: action.newFilter }
-
-        // case SET_SEARCH_QUERY:
-        //     return { ...state, searchQuery: action.searchQuery }
+        Filter
+        case SET_FILTER_BY:
+            return { ...state, filterBy: {...action.filterBy} }
 
         //Toy general
         case SET_IS_LOADING:

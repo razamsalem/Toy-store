@@ -5,7 +5,6 @@ export function ToyList({ toys, onEditToy, onRemoveToy }) {
     return (
 
         <ul className="toy-list">
-
             {toys.map(toy =>
                 <li className="toy-preview" key={toy._id}>
                     <ToyPreview toy={toy} />

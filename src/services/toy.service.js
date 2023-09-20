@@ -10,6 +10,7 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
+    getDefaultFilter
 }
 
 const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Car', 'Puzzle', 'Outdoor', 'Battery Powered']
@@ -26,7 +27,7 @@ const toysDemo = [
     {
         _id: 't102',
         name: 'RC Car',
-        price: 89, 
+        price: 89,
         labels: ['Outdoor', 'On wheels', 'Battery Powered'],
         createdAt: 1631031801011,
         inStock: false,
@@ -35,22 +36,20 @@ const toysDemo = [
 
 _createToys()
 
-function query(filterBy = { name: '' }) {
+function query(filterBy = {}) {
     // return axios.get(BASE_URL).then(res => res.data)
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            //     if (filterBy.txt)
-            //         toys = toys.filter(t => t.title.toLowerCase().includes(filterBy.txt.toLowerCase()))
-            //     if (filterBy.status === 'done') return toys.filter(t => t.isDone)
-            //     else if (filterBy.status === 'active') return toys.filter(t => !t.isDone)
+            if (filterBy.txt) toys = toys.filter(toy => toy.name.toLowerCase().includes(filterBy.txt.toLowerCase()))
 
             return toys
-        }
-        )
+        })
 }
+
 function getById(toyId) {
     return storageService.get(STORAGE_KEY, toyId)
 }
+
 function remove(toyId) {
     // return Promise.reject('Not now!')
     return storageService.remove(STORAGE_KEY, toyId)
@@ -75,6 +74,9 @@ function getEmptyToy() {
     }
 }
 
+function getDefaultFilter() {
+    return { txt: '', InStock: null, labels: [] }
+}
 
 function _createToys() {
     let toys = utilService.loadFromStorage(STORAGE_KEY)

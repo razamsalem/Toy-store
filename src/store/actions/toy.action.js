@@ -1,12 +1,13 @@
 import { showSuccessMsg } from "../../services/event-bus.service.js"
 import { toyService } from "../../services/toy.service.js"
 import { SET_TOYS, REMOVE_TOY, SET_IS_LOADING, UNDO_TOY, UPDATE_TOY, ADD_TOY } from "../reducers/toy.reducer.js"
-import {store} from "../store.js"
+import { store } from "../store.js"
 
 export function loadToys() {
+    const { filterBy } = store.getState().toyModule
 
-    store.dispatch({type: SET_IS_LOADING, isLoading: true})
-    return toyService.query()
+    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+    return toyService.query(filterBy)
         .then(toys => {
             showSuccessMsg('Toys Reloaded successfully')
             store.dispatch({ type: SET_TOYS, toys })
@@ -16,7 +17,7 @@ export function loadToys() {
             throw err
         })
         .finally(() => {
-            store.dispatch({type: SET_IS_LOADING, isLoading: false})
+            store.dispatch({ type: SET_IS_LOADING, isLoading: false })
         })
 }
 

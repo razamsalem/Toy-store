@@ -1,15 +1,17 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToyOptimistic, saveToy } from "../store/actions/toy.action.js"
+import { SET_FILTER_BY } from "../store/reducers/toy.reducer.js"
 import { toyService } from "../services/toy.service.js"
 import { ToyList } from "../cmps/ToyList.jsx"
+import { ToyFilter } from "./ToyFilter.jsx"
 
 export function ToyIndex() {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
-    // const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+    const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
 
     useEffect(() => {
@@ -18,16 +20,7 @@ export function ToyIndex() {
                 console.log(err)
                 showErrorMsg('Cannot load toys')
             })
-    }, [])
-
-    // useEffect(() => {
-    //     loadToys()
-    //         .catch(err => {
-    //             console.log('err:', err)
-    //             showErrorMsg('Cannot load toys')
-    //         })
-    // }, [filterBy])
-
+    }, [filterBy])
 
     function onAddToy() {
         const toyToSave = toyService.getEmptyToy()
@@ -71,14 +64,21 @@ export function ToyIndex() {
             })
     }
 
+    function onSetFilter(filterBy) {
+        dispatch({ type: SET_FILTER_BY, filterBy })
+    }
+
 
     return (
         <section className="toy-index">
 
             <button className="add-toy-btn" onClick={onAddToy}>Add Toy</button>
-
+            <ToyFilter
+                filterBy={filterBy}
+                onSetFilter={onSetFilter}
+            />
             {isLoading && <div>Loading...</div>}
-            
+
             {!isLoading && <ToyList
                 toys={toys}
                 onEditToy={onEditToy}
