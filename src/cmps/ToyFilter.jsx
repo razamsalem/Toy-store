@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 import { utilService } from "../services/util.service.js"
+import { ToyButton } from "./ToyButton.jsx"
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
@@ -51,6 +52,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         <section className="toy-filter">
             <h2>Toys Filter</h2>
             <form >
+
                 <label htmlFor="toyName">Name:</label>
                 <input type="text"
                     id="toyName"
@@ -81,9 +83,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     </div>
                 ))}
 
-                <button onClick={toggleLabelOptions}>
-                    {showLabelOptions ? "Hide Labels" : "Filter by Labels"}
-                </button>
+                <ToyButton func={toggleLabelOptions} txt={showLabelOptions ? "Hide Labels" : "Filter by Labels"} />
 
             </form>
 

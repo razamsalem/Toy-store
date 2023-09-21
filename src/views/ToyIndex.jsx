@@ -7,6 +7,7 @@ import { SET_FILTER_BY } from "../store/reducers/toy.reducer.js"
 import { toyService } from "../services/toy.service.js"
 import { ToyList } from "../cmps/ToyList.jsx"
 import { ToyFilter } from "../cmps/ToyFilter.jsx"
+import { ToyButton } from "../cmps/ToyButton.jsx"
 
 
 export function ToyIndex() {
@@ -71,8 +72,8 @@ export function ToyIndex() {
 
     return (
         <section className="toy-index">
-
-            <button className="add-toy-btn" onClick={onAddToy}>Add Toy</button>
+            <ToyButton func={onAddToy} txt={'New toy'} />
+            {/* <button className="add-toy-btn" onClick={onAddToy}>Add Toy</button> */}
             <ToyFilter
                 filterBy={filterBy}
                 onSetFilter={onSetFilter}

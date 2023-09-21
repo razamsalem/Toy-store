@@ -1,6 +1,7 @@
 body {
     margin: 0;
     min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 h1,
@@ -26,6 +27,11 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+.logo-clr {
+    color: #EE9322;
+}
+
 
 .card {
     background-color: rgba(192, 217, 182, 0.2);
