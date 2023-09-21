@@ -16,7 +16,7 @@ export const toyService = {
     getToyLabels
 }
 
-const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Cards' , 'Doll', 'Car', 'Puzzle', 'Outdoor', 'Battery Powered']
+const labels = [ 'Action', 'On wheels', 'Box game', 'Art', 'Baby', 'Cards' , 'Doll', 'Car', 'Puzzle', 'Family', 'Outdoor', 'Battery Powered']
 const toysDemo = [
     {
         _id: 't101',

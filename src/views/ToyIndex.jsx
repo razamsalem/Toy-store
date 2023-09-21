@@ -6,7 +6,8 @@ import { loadToys, removeToyOptimistic, saveToy } from "../store/actions/toy.act
 import { SET_FILTER_BY } from "../store/reducers/toy.reducer.js"
 import { toyService } from "../services/toy.service.js"
 import { ToyList } from "../cmps/ToyList.jsx"
-import { ToyFilter } from "./ToyFilter.jsx"
+import { ToyFilter } from "../cmps/ToyFilter.jsx"
+
 
 export function ToyIndex() {
     const dispatch = useDispatch()

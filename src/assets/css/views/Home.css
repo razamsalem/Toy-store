@@ -1,1 +1,15 @@
  /* home */
+
+ .home {
+    text-align: center;
+ }
+
+ .home .app-info-display {
+    max-width: 50%;
+    margin: 20px auto;
+ }
+
+ .home .title {
+    color: #232323;
+    font-size: 1.5em;
+ }

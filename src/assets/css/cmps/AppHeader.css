@@ -9,19 +9,20 @@ header {
     padding: 30px 15px;
 }
 
+.app-header .logo-clr {
+    color: #EE9322;
+}
+
 nav a {
+    color: #FFF6F4;
     margin: .5em;
 }
 
-nav a:active {
-    color: purple;
-}
-
 nav a.active {
-    color: #072a4f;
+    color: #EE9322;
     font-weight: bold;
 }
 
 h3 {
-    color: #072a4f;
+    color: #FFF6F4;
 }
