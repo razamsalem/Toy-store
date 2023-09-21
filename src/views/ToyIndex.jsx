@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -68,7 +68,6 @@ export function ToyIndex() {
         dispatch({ type: SET_FILTER_BY, filterBy })
     }
 
-
     return (
         <section className="toy-index">
 
@@ -77,6 +76,7 @@ export function ToyIndex() {
                 filterBy={filterBy}
                 onSetFilter={onSetFilter}
             />
+
             {isLoading && <div>Loading...</div>}
 
             {!isLoading && <ToyList

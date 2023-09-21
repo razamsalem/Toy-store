@@ -1,7 +1,9 @@
 import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import demoData from './demo-data.service.js'
+// import demoData from './demo-data.service.js'
 
+const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toysDB'
 
 export const toyService = {
@@ -14,8 +16,7 @@ export const toyService = {
     getToyLabels
 }
 
-const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Car', 'Puzzle', 'Outdoor', 'Battery Powered']
-
+const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Cards' , 'Doll', 'Car', 'Puzzle', 'Outdoor', 'Battery Powered']
 const toysDemo = [
     {
         _id: 't101',
@@ -38,52 +39,56 @@ const toysDemo = [
 _createToys()
 
 function query(filterBy = {}) {
-    return storageService.query(STORAGE_KEY).then(toys => {
+    // return axios.get(BASE_URL).then(res => res.data)
+    return httpService.get(BASE_URL, filterBy)
 
-        let toyCopy = [...toys]
-        // console.log('toyCopy', toyCopy)
 
-        if (filterBy.txt) {
-            const regExp = new RegExp(filterBy.txt, 'i')
-            toyCopy = toyCopy.filter(toy => regExp.test(toy.name))
-            // console.log('toyCopy txt', toyCopy)
-        }
+    // return storageService.query(STORAGE_KEY).then(toys => {
+    //     let toyCopy = [...toys]
+    //     // console.log('toyCopy', toyCopy)
 
-        if (filterBy.inStock !== undefined) {
-            if (filterBy.inStock === true) {
-                toyCopy = toyCopy.filter(toy => toy.inStock === true)
-            } else if (filterBy.inStock === false) {
-                toyCopy = toyCopy.filter(toy => toy.inStock === false)
-            }
-        }
+    //     if (filterBy.txt) {
+    //         const regExp = new RegExp(filterBy.txt, 'i')
+    //         toyCopy = toyCopy.filter(toy => regExp.test(toy.name))
+    //         // console.log('toyCopy txt', toyCopy)
+    //     }
 
-        if (filterBy.labels && filterBy.labels.length > 0) {
-            toyCopy = toyCopy.filter(toy => {
-                return toy.labels.some(label => filterBy.labels.includes(label))
-            })
-        }
+    //     if (filterBy.inStock !== undefined) {
+    //         if (filterBy.inStock === true) {
+    //             toyCopy = toyCopy.filter(toy => toy.inStock === true)
+    //         } else if (filterBy.inStock === false) {
+    //             toyCopy = toyCopy.filter(toy => toy.inStock === false)
+    //         }
+    //     }
 
-        // return axios.get(BASE_URL).then(res => res.data)
-        return toyCopy
-    })
+    //     if (filterBy.labels && filterBy.labels.length > 0) {
+    //         toyCopy = toyCopy.filter(toy => {
+    //             return toy.labels.some(label => filterBy.labels.includes(label))
+    //         })
+    //     }
+
+    //     return toyCopy
+    // })
 }
 
 function getById(toyId) {
-    return storageService.get(STORAGE_KEY, toyId)
+    return httpService.get(BASE_URL + toyId)
+    // return storageService.get(STORAGE_KEY, toyId)
 }
 
 function remove(toyId) {
+    return httpService.delete(BASE_URL + toyId)
     // return Promise.reject('Not now!')
-    return storageService.remove(STORAGE_KEY, toyId)
+    // return storageService.remove(STORAGE_KEY, toyId)
 }
 
 function save(toy) {
     if (toy._id) {
-        return storageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL, toy)
+        // return storageService.put(STORAGE_KEY, toy)
     } else {
-        // when switching to backend - remove the next line
-        // todo.owner = userService.getLoggedinUser()
-        return storageService.post(STORAGE_KEY, toy)
+        return httpService.post(BASE_URL, toy)
+        // return storageService.post(STORAGE_KEY, toy)
     }
 }
 

@@ -16,6 +16,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
     function toggleLabelOptions() {
         setShowLabelOptions((prevShowLabelOptions) => !prevShowLabelOptions)
+        if (!showLabelOptions) {
+            setFilterByToEdit((prevFilter) => ({ ...prevFilter, labels: [] }))
+        }
     }
 
     function handleChange({ target }) {
@@ -40,8 +43,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             value = Array.from(target.selectedOptions, (option) => option.value)
         }
 
-        // value = (type === 'number') ? (+value || '') : value
-        // console.log('value:', value)
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
@@ -59,12 +60,12 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
 
-                <label htmlFor="inStock">Filter by stock:</label>
+                {/* <label htmlFor="inStock">Filter by stock:</label>
                 <select value={filterByToEdit.inStock} name="inStock" id="inStock" onChange={handleChange}>
                     <option value="">All</option>
                     <option value="true">In Stock</option>
                     <option value="false">Out Of Stock</option>
-                </select>
+                </select> */}
 
                 {showLabelOptions && toyService.getToyLabels().map(label => (
                     <div key={label}>
