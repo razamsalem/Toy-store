@@ -10,7 +10,8 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getToyLabels
 }
 
 const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Car', 'Puzzle', 'Outdoor', 'Battery Powered']
@@ -37,13 +38,34 @@ const toysDemo = [
 _createToys()
 
 function query(filterBy = {}) {
-    // return axios.get(BASE_URL).then(res => res.data)
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            if (filterBy.txt) toys = toys.filter(toy => toy.name.toLowerCase().includes(filterBy.txt.toLowerCase()))
+    return storageService.query(STORAGE_KEY).then(toys => {
 
-            return toys
-        })
+        let toyCopy = [...toys]
+        // console.log('toyCopy', toyCopy)
+
+        if (filterBy.txt) {
+            const regExp = new RegExp(filterBy.txt, 'i')
+            toyCopy = toyCopy.filter(toy => regExp.test(toy.name))
+            // console.log('toyCopy txt', toyCopy)
+        }
+
+        if (filterBy.inStock !== undefined) {
+            if (filterBy.inStock === true) {
+                toyCopy = toyCopy.filter(toy => toy.inStock === true)
+            } else if (filterBy.inStock === false) {
+                toyCopy = toyCopy.filter(toy => toy.inStock === false)
+            }
+        }
+
+        if (filterBy.labels && filterBy.labels.length > 0) {
+            toyCopy = toyCopy.filter(toy => {
+                return toy.labels.some(label => filterBy.labels.includes(label))
+            })
+        }
+
+        // return axios.get(BASE_URL).then(res => res.data)
+        return toyCopy
+    })
 }
 
 function getById(toyId) {
@@ -75,7 +97,7 @@ function getEmptyToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', InStock: null, labels: [] }
+    return { txt: '', inStock: undefined, labels: [] }
 }
 
 function _createToys() {
@@ -84,4 +106,8 @@ function _createToys() {
         toys = toysDemo
         utilService.saveToStorage(STORAGE_KEY, toys)
     }
+}
+
+function getToyLabels() {
+    return labels
 }

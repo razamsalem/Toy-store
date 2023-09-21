@@ -26,3 +26,11 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+.positive {
+    color: #00b500;
+}
+
+.negative {
+    color: #e20000;
+}
