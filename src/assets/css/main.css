@@ -7,12 +7,13 @@
 
 @import './basics/base.css';
 @import './basics/helpers.css';
-/* @import './basics/layout.css'; */
+@import './basics/layout.css';
 
 /* Views */
 @import './views/home.css';
 @import './views/ToyIndex.css';
 @import './views/ToyDetails.css';
+@import './views/About.css';
 
 /* Cmps */
 @import './cmps/UserMsg.css';

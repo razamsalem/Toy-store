@@ -1,6 +1,7 @@
  /* home */
 
  .home {
+    grid-column: 2;
     text-align: center;
  }
 
@@ -12,4 +13,18 @@
  .home .title {
     color: #232323;
     font-size: 1.5em;
+ }
+
+ .home-image {
+   grid-column: 1/-1;
+   max-height: 80%;
+ }
+
+ .home img {
+    max-height: 43%;
+    border-radius: 50px;
+ }
+
+ .about-link:hover {
+   color:#EE9322;
  }

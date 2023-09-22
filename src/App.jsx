@@ -8,6 +8,7 @@ import { store } from './store/store'
 import { ToyDetails } from './views/ToyDetails'
 import { ToyEdit } from './views/ToyEdit'
 import { ToyIndex } from './views/ToyIndex'
+import { About } from './views/About'
 
 export function App() {
 
@@ -18,6 +19,7 @@ export function App() {
           <AppHeader />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/toy" element={<ToyIndex />} />
             <Route path="/toy/:toyId" element={<ToyDetails />} />
             <Route path="/toy/edit/:toyId" element={<ToyEdit />} />

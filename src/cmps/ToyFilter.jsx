@@ -70,7 +70,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 <AutoComplete onToyNameSelect={handleToyNameSelect} />
 
                 <button className="btn-show-searchbar" onClick={toggleNameInput}>{showNameInput
-                    ? "Hide deep search"
+                    ? "Hide manual search"
                     : "I want to search more precisely"}</button>
 
                 {showNameInput && (

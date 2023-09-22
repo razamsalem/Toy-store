@@ -25,3 +25,7 @@
 .bold {
     font-weight: 700;
 }
+
+.clean-list {
+    list-style: none;
+}
