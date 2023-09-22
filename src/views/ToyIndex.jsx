@@ -27,7 +27,7 @@ export function ToyIndex() {
     function onAddToy() {
         const toyToSave = toyService.getEmptyToy()
         toyToSave.name = prompt('Name?')
-        toyToSave.price = +prompt('Price?')
+        toyToSave.price = +prompt('Price?') || 0
 
         saveToy(toyToSave)
             .then(savedToy => {
@@ -72,7 +72,7 @@ export function ToyIndex() {
 
     return (
         <section className="toy-index">
-            <ToyButton func={onAddToy} txt={'New toy'} />
+            <ToyButton size={'medium'} func={onAddToy} txt={'New toy'} />
             {/* <button className="add-toy-btn" onClick={onAddToy}>Add Toy</button> */}
             <ToyFilter
                 filterBy={filterBy}
@@ -86,7 +86,6 @@ export function ToyIndex() {
                 onEditToy={onEditToy}
                 onRemoveToy={onRemoveToy}
             />}
-
         </section>
     )
 }

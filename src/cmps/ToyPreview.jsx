@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function ToyPreview({ toy }) {
     return (
-        <article>
+        <article className="toy-preview-art">
             <h4>{toy.name}</h4>
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             {toy.inStock ?

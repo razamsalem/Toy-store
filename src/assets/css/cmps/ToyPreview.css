@@ -1,0 +1,15 @@
+.toy-preview {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: calc(25% - 16px);
+    display: inline-block; 
+    vertical-align: top; 
+}
+
+.toy-preview-art > *:not(:first-child) {
+    margin-block: 5px;
+}

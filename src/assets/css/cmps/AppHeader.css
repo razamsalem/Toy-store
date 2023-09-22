@@ -19,6 +19,6 @@ nav a.active {
     font-weight: bold;
 }
 
-h3 {
+.app-header h3 {
     color: #FFF6F4;
 }

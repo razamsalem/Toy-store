@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 import { utilService } from "../services/util.service.js"
 import { ToyButton } from "./ToyButton.jsx"
+import { AutoComplete } from "./AutoComplete.jsx"
 
 
 export function ToyFilter({ filterBy, onSetFilter }) {
-
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const [showLabelOptions, setShowLabelOptions] = useState(false)
+    const [showNameInput, setShowNameInput] = useState(false)
 
     onSetFilter = useRef(utilService.debounce(onSetFilter))
 
@@ -20,6 +21,17 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         if (!showLabelOptions) {
             setFilterByToEdit((prevFilter) => ({ ...prevFilter, labels: [] }))
         }
+    }
+
+    function toggleNameInput() {
+        setShowNameInput((prevShowNameInput) => !prevShowNameInput)
+    }
+
+    function handleToyNameSelect(selectedToyName) {
+        setFilterByToEdit((prevFilter) => ({
+            ...prevFilter,
+            txt: selectedToyName,
+        }))
     }
 
     function handleChange({ target }) {
@@ -47,20 +59,43 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
+    function handleSubmit(ev) {
+        ev.preventDefault()
+    }
+
 
     return (
         <section className="toy-filter">
-            <h2>Toys Filter</h2>
-            <form >
+            <form onSubmit={handleSubmit}>
+                <AutoComplete onToyNameSelect={handleToyNameSelect} />
 
-                <label htmlFor="toyName">Name:</label>
-                <input type="text"
-                    id="toyName"
-                    name="txt"
-                    placeholder="By name"
-                    value={filterByToEdit.txt}
-                    onChange={handleChange}
-                />
+                <button className="btn-show-searchbar" onClick={toggleNameInput}>{showNameInput
+                    ? "Hide deep search"
+                    : "I want to search more precisely"}</button>
+
+                {showNameInput && (
+                    <>
+                        <input className="deeper-search"
+                            type="text"
+                            id="toyName"
+                            name="txt"
+                            placeholder="Search..."
+                            value={filterByToEdit.txt}
+                            onChange={handleChange}
+                        />
+                    </>
+                )}
+
+                {/* <ToyButton
+                    size={"small"}
+                    func={toggleNameInput}
+                    txt={
+                        showNameInput
+                            ? "Hide Name Input"
+                            : "I want to search more precisely"
+                    }
+                /> */}
+
 
                 {/* <label htmlFor="inStock">Filter by stock:</label>
                 <select value={filterByToEdit.inStock} name="inStock" id="inStock" onChange={handleChange}>
@@ -83,7 +118,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     </div>
                 ))}
 
-                <ToyButton func={toggleLabelOptions} txt={showLabelOptions ? "Hide Labels" : "Filter by Labels"} />
+                <ToyButton size={'small'} func={toggleLabelOptions} txt={showLabelOptions ? "Hide Labels" : "Filter by Labels"} />
 
             </form>
 

@@ -1,0 +1,36 @@
+.autocomplete-toyjoy {
+    .MuiInput-underline:before {
+        border-bottom: 2px solid #EE9322;
+    }
+
+    .MuiInput-underline:after {
+        border-bottom: 2px solid #EE9322;
+    }
+
+    .MuiAutocomplete-popupIndicator {
+        color: #EE9322;
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+        border-color: #EE9322;
+    }
+
+    .Mui-focused .MuiInputBase-input {
+        color: #EE9322;
+    }
+}
+
+.autocomplete-toyjoy .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #EE9322 !important;
+}
+
+.autocomplete-toyjoy .MuiInputLabel-root.Mui-focused {
+    color: #EE9322 !important;
+}
+
+.autocomplete-container {
+    display: flex;
+    justify-content: center;
+    margin-block: 10px;
+}
+

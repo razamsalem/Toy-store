@@ -1,0 +1,26 @@
+.toy-filter .btn-show-searchbar {
+    display: block;
+    border: none;
+    margin: auto;
+
+    background: none;
+    font-size: .7em;
+    cursor: pointer;
+}
+
+.toy-filter .btn-show-searchbar:hover {
+    color: #EE9322;
+}
+
+.toy-filter .deeper-search {
+    display: block;
+    margin: 10px auto;
+    padding: .5em;
+    border-radius: 8px;
+    border: 1px solid #EE9322;
+    transition: background-color .6s;
+}
+
+.toy-filter .deeper-search:focus {
+    background-color: #ee922213;
+}
