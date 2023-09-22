@@ -58,7 +58,7 @@
     border-radius: 8px;
 }
 
-.branch-card h2{
+.branch-card h2 {
     color: #333;
     margin-top: 10px;
 }
@@ -67,4 +67,28 @@
     color: #777;
     font-size: 1rem;
     margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    p {
+        text-align: left;
+    }
+
+    .about {
+        padding: 20px;
+    }
+
+    .branch-cards {
+        display: block;
+    }
+
+    .map-container {
+        width: 100%;
+    }
+
+    .map-buttons {
+        margin-inline: 10px;
+    }
+
+
 }

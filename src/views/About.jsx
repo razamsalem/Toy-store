@@ -34,7 +34,10 @@ export function About() {
     return (
         <section className="grid-container">
             <div className="about">
-                <h1>About <span style={{ fontSize: '34px' }}><span style={{ color: '#333' }}>Toy</span>Joy</span> Your Global Toy Wonderland</h1>
+                <h1><span style={{ fontSize: '34px' }}><span style={{ color: '#333' }}>Toy</span>Joy</span></h1>
+
+                <h1>Your Global Toy Wonderland</h1>
+                
 
                 <p>Welcome to ToyJoy, your ultimate destination for joy, wonder, and a world of toys! At ToyJoy, we believe in the power of play, imagination, and creating cherished memories that last a lifetime. With branches spanning across five continents, our mission is to spread happiness to every corner of the globe.</p>
 
