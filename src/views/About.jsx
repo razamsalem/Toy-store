@@ -55,6 +55,7 @@ export function About() {
                 <h1> Join the ToyJoy Family </h1>
 
                 <p>At ToyJoy, we're more than just a toy store. We're a global community of parents, grandparents, caregivers, and children who share a common love for play and exploration.Join us on this exciting adventure, and let's create moments of joy together. Discover the magic of ToyJoy today.Visit one of our branches and experience the wonder of toys like never before.It's more than just shopping; it's an adventure waiting to unfold.ToyJoy - where imagination knows no bounds! </p>
+
                 <div className="branch-cards">
                     <div className="branch-card">
                         <img src={toyJoyTelAvivImage} alt="ToyJoy Tel Aviv" />
@@ -86,6 +87,7 @@ export function About() {
                         <p>Join us in Mexico City at ToyJoy and experience the joy of play. Our branch is a place where families come together.</p>
                     </div>
                 </div>
+
                 <div className="map-container" >
                     <div className="map-buttons">
                         <ToyButton func={centerOnLondon} size={'small'} txt={'ToyJoy London'} marginBlock={'5px'} />
@@ -97,6 +99,7 @@ export function About() {
                     <GoogleMap centerMap={mapCenter} />
                 </div >
             </div >
+
         </section>
     )
 }

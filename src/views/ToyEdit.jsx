@@ -49,7 +49,7 @@ export function ToyEdit() {
         toyService
             .save(toyToEdit)
             .then(() => {
-                navigate('/')
+                navigate('/toy')
                 console.log(`Toy ${params.toyId} Saved Successfully`)
                 showSuccessMsg(`Toy Saved Successfully`)
             })

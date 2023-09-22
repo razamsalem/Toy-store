@@ -44,8 +44,7 @@ export function ToyDetails() {
 
             <div className="btns">
                 <Link to="/toy">Back</Link>
-                {/* <Link to={`/toy/remove/${toy._id}`}>Remove toy</Link> */}
-                {/* <Link to={`/toy/edit/${toy._id}`}>Edit toy</Link> */}
+                <Link className="details-edit-btn" to={`/toy/edit/${toy._id}`}><i className="fa-solid fa-pen"></i></Link>
             </div>
         </section>
     )

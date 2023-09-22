@@ -8,7 +8,7 @@ export function ToyPreview({ toy }) {
             {toy.inStock ?
                 <p><span className="positive">Currently in stock</span></p> :
                 <p><span className="negative">Out of stock</span></p>}
-            <Link to={`/toy/${toy._id}`}>Details</Link>
+            <Link className="details-btn" to={`/toy/${toy._id}`}>See More</Link>
         </article>
     )
 }

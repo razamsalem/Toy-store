@@ -73,7 +73,6 @@ export function ToyIndex() {
     return (
         <section className="toy-index">
             <ToyButton size={'medium'} func={onAddToy} txt={'New toy'} />
-            {/* <button className="add-toy-btn" onClick={onAddToy}>Add Toy</button> */}
             <ToyFilter
                 filterBy={filterBy}
                 onSetFilter={onSetFilter}

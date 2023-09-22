@@ -1,3 +1,97 @@
-.toy-details {
+/* .toy-details {
     color: #232323;
+}
+
+.details-edit-btn {
+    position: absolute;
+    font-size: 1em;
+    bottom: 1em;
+    right: 1em;
+    background-color: #ee9322;
+    padding: 1em;
+    border-radius: 50%;
+    color: #357de9;
+}
+ */
+
+.toy-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.toy-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+    text-align: left;
+    width: 80%;
+    padding: 10px;
+}
+
+.info h1 {
+    color: #333;
+    font-size: 24px;
+    margin: 0;
+}
+
+.info h3 {
+    color: #666;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.positive {
+    color: #00a600;
+}
+
+.negative {
+    color: #ff0000;
+}
+
+.btns {
+    margin-top: 20px;
+}
+
+.btns a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #357de9;
+    color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btns a:hover {
+    background-color: #FFA600;
+}
+
+.details-edit-btn {
+    background-color: #333;
+}
+
+.details-edit-btn i {
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+
+@media (max-width: 768px) {
+    .toy-bio {
+        width: 100%;
+    }
 }

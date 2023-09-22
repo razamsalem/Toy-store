@@ -6,6 +6,7 @@
 /* Basics */
 
 @import './basics/base.css';
+@import './basics/buttons.css';
 @import './basics/helpers.css';
 @import './basics/layout.css';
 
@@ -13,6 +14,7 @@
 @import './views/home.css';
 @import './views/ToyIndex.css';
 @import './views/ToyDetails.css';
+@import './views/ToyEdit.css';
 @import './views/About.css';
 
 /* Cmps */
