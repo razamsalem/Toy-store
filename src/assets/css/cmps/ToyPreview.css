@@ -5,11 +5,11 @@
     margin: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    width: calc(25% - 16px);
-    display: inline-block; 
-    vertical-align: top; 
+    max-width: calc(25% - 16px);
+    display: inline-block;
+    vertical-align: top;
 }
 
-.toy-preview-art > *:not(:first-child) {
+.toy-preview-art>*:not(:first-child) {
     margin-block: 5px;
 }
