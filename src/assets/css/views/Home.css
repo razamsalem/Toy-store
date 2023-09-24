@@ -16,8 +16,8 @@
  }
 
  .home-image {
-   grid-column: 1/-1;
-   max-height: 80%;
+    grid-column: 1/-1;
+    max-height: 80%;
  }
 
  .home img {
@@ -26,5 +26,17 @@
  }
 
  .about-link:hover {
-   color:#EE9322;
+    color: #EE9322;
+ }
+
+ @media (max-width: 768px) {
+
+   .card {
+      padding: .5em;
+   }
+
+   .card p {
+      text-align: center;
+   }
+   
  }
