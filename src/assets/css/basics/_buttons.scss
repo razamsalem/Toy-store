@@ -3,10 +3,10 @@
     background: none;
     border: none;
     cursor: pointer;
-}
 
-.remove-btn:hover {
-    animation: wobble 1s;
+    &:hover {
+        animation: wobble 1s;
+    }
 }
 
 .edit-btn {
@@ -14,14 +14,15 @@
     border: none;
     cursor: pointer;
     margin-inline-start: 4px;
+
+    &:hover {
+        color: #EE9322;
+        animation: headShake 1s
+    }
+
 }
 
-.edit-btn:hover {
-    color: #EE9322;
-    animation: headShake 1s
-}
-
-.details-btn{
+.details-btn {
     background: #EE9322;
     padding: 2px;
     border: 2px solid #d87b09;
@@ -29,8 +30,8 @@
     color: #fff;
     font-size: 14px;
     transition: background-color .4s;
-}
 
-.details-btn:hover {
-    background-color: #d87b09;
+    &:hover {
+        background-color: #d87b09;
+    }
 }
