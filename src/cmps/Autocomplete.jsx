@@ -15,7 +15,6 @@ export function AutoComplete({ onToyNameSelect }) {
         })
     }, [])
 
-
     function handleToyNameSelect(ev, value) {
         if (value) {
             onToyNameSelect(value.label)

@@ -13,15 +13,15 @@ export function ToyDetails() {
         loadToy()
     }, [toyId])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then(toy => setToy(toy))
-            .catch(err => {
-                console.log('Had issues in toy details ->', err)
-                showErrorMsg('Oops cannot load toy')
-                navigate('/')
-                // navigate('/toy')
-            })
+    async function loadToy() {
+      const desiredToy = await toyService.getById(toyId)
+        try {
+            setToy(desiredToy)
+        } catch (err) {
+            console.log('Had issues in toy details ->', err)
+            showErrorMsg('Oops cannot load toy')
+            navigate('/')
+        }
     }
 
     if (!toy) return <div>Loading...</div> // Change to Redux loading instead
