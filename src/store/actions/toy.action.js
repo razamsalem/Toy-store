@@ -9,7 +9,7 @@ export async function loadToys() {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     const toys = await toyService.query(filterBy)
     try {
-        showSuccessMsg('Toys Reloaded successfully')
+        // showSuccessMsg('Toys Reloaded successfully')
         store.dispatch({ type: SET_TOYS, toys })
     } catch (err) {
         console.log('toy action -> cannot load toys', err)

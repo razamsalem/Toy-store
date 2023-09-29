@@ -15,6 +15,7 @@ export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
+    const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
     useEffect(() => {
         loadToys()
@@ -70,7 +71,7 @@ export function ToyIndex() {
 
     return (
         <section className="toy-index">
-            <ToyButton size={'medium'} func={onAddToy} txt={'New toy'} />
+            {user && user.isAdmin && (<ToyButton size={'medium'} func={onAddToy} txt={'New toy'} />)}
             <ToyFilter
                 filterBy={filterBy}
                 onSetFilter={onSetFilter}
@@ -80,9 +81,11 @@ export function ToyIndex() {
 
             {!isLoading && <ToyList
                 toys={toys}
+                user={user}
                 onEditToy={onEditToy}
                 onRemoveToy={onRemoveToy}
             />}
+            <small>*To add, edit or delete toys you need to be an admin</small>
         </section>
     )
 }
