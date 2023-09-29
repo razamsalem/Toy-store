@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { logout } from '../store/actions/user.actions.js'
 import { LoginSignup } from './LoginSignup.jsx'
+import { UserMsg } from "./UserMsg.jsx";
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
@@ -28,9 +29,7 @@ export function AppHeader() {
             </Link>
 
             {user && <section className="user-info">
-                <p>
-                    {user.fullname} <span>${user.balance}</span>
-                </p>
+                <p>Hello {user.fullname}</p>
                 <button onClick={onLogout}>Logout</button>
             </section>}
             {!user && <section className="user-info">
@@ -41,6 +40,7 @@ export function AppHeader() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/toy">Toys</NavLink>
                 <NavLink to="/about">About us</NavLink>
+                <UserMsg />
             </nav>
         </header>
     )

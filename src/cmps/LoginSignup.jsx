@@ -7,8 +7,8 @@ import { login, signup } from '../store/actions/user.actions.js'
 function getEmptyCredentials() {
     return {
         fullname: '',
-        username: 'israelIsraeli',
-        password: '123',
+        username: '',
+        password: '',
     }
 }
 
@@ -41,7 +41,7 @@ export function LoginSignup() {
                     showSuccessMsg(`Hi again ${user.fullname}`)
                 })
                 .catch(err => {
-                    showErrorMsg('Cannot login')
+                    showErrorMsg('Invalid username or password')
                     console.log(`error: ${err}`)
                 })
         }
@@ -88,7 +88,7 @@ export function LoginSignup() {
                 <button>{isSignupState ? 'Signup' : 'Login'}</button>
             </form>
 
-            <div className="btns">
+            <div className="signup">
                 <a href="#" onClick={onToggleSignupState}>
                     {isSignupState ? 'Already a member? Login' : 'New user? Signup here'}
                 </a >

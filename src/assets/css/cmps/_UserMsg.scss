@@ -1,21 +1,25 @@
 .user-msg {
+    position: absolute;
     background-color: lightgray;
     padding: 1em;
-    position: absolute;
-    top: 1em;
+    bottom: 1em;
     right: 1em;
-}
+    border-radius: 10px;
 
-.user-msg.success {
-    background-color: lightgreen;
-}
+    button {
+        float: right;
+        background-color: rgba(205, 205, 205, 0.349);
+        margin-inline-start: 5px;
+        border-radius: 12px;
+        border-color: #000;
+        cursor: pointer;
+    }
 
-.user-msg.error {
-    background-color: lightpink;
-}
+    &.success {
+        background-color: lightgreen;
+    }
 
-
-.user-msg button{
-    float: right;
-    margin: 1em;
+    &.error {
+        background-color: lightpink;
+    }
 }
