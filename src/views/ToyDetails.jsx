@@ -7,10 +7,13 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { reviewService } from "../services/review.service.js"
 import { ReviewList } from "../cmps/ReviewList.jsx"
 import { ReviewToy } from "../cmps/ReviewToy.jsx"
+import { useSelector } from "react-redux"
+
 
 export function ToyDetails() {
-    const [toy, setToy] = useState(null)
+    const user = useSelector((storeState) => storeState.userModule.loggedinUser)
     const [reviews, setReviews] = useState(null)
+    const [toy, setToy] = useState(null)
     const { toyId } = useParams()
     const navigate = useNavigate()
 
@@ -33,7 +36,8 @@ export function ToyDetails() {
 
     async function onLoadReviews() {
         try {
-            const reviews = await reviewService.query({ byToyId: toyId })
+            // const reviews = await reviewService.query({ byToyId: toyId })
+            const reviews = await loadReviews({ byToyId: toyId })
             setReviews(reviews)
         } catch (err) {
             console.log(`error loading reviews in toyDetails: ${err.message}`)
@@ -72,14 +76,14 @@ export function ToyDetails() {
             </div>
 
             <section className="reviews">
-                Reviews:
+                <i className="fa-solid fa-star"></i> Reviews <i className="fa-solid fa-star"></i>
                 <ReviewList reviews={reviews} />
-                <ReviewToy onReviewToy={onReviewToy}/>
+                <ReviewToy onReviewToy={onReviewToy} />
             </section>
 
             <div className="btns">
                 <Link to="/toy">Back</Link>
-                <Link className="details-edit-btn" to={`/toy/edit/${toy._id}`}><i className="fa-solid fa-pen"></i></Link>
+                {user && user.isAdmin && (<Link className="details-edit-btn" to={`/toy/edit/${toy._id}`}><i className="fa-solid fa-pen"></i></Link>)}
             </div>
         </section>
     )

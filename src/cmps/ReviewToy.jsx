@@ -30,7 +30,6 @@ export function ReviewToy({ onReviewToy }) {
                 onReviewToy(reviewToAdd)
             }}>
             <label className="add-review-input">
-                Review:
                 <input type="text" name="txt" placeholder="Add your review.." required />
             </label>
             <button className="btn send-msg">
