@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -8,6 +8,7 @@ import { toyService } from "../services/toy.service.js"
 import { ToyList } from "../cmps/ToyList.jsx"
 import { ToyFilter } from "../cmps/ToyFilter.jsx"
 import { ToyButton } from "../cmps/ToyButton.jsx"
+import { uploadImg } from "../services/cloudinary-service.js"
 
 
 export function ToyIndex() {

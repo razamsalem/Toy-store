@@ -30,6 +30,7 @@ export function ToyDetails() {
             <div className="toy-bio">
                 <div className="info">
                     <h1>{toy.name}</h1>
+                    {/* <img src="https://res.cloudinary.com/de2rdmsca/image/upload/v1696178312/Talking_Doll_d6ojir.png" alt="" /> */}
                     <h3>Price: {toy.price}</h3>
                     <h3>Related to: {toy.labels.join(', ')}</h3>
                     {toy.inStock ?

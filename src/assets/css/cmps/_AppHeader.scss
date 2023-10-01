@@ -23,3 +23,10 @@ nav a.active {
 .app-header h3 {
     color: #FFF6F4;
 }
+
+@media (max-width: 768px) {
+
+    .app-header .user-info {
+        display: none;
+    }
+}

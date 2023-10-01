@@ -104,7 +104,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <option value="false">Out Of Stock</option>
                 </select> */}
 
-                {showLabelOptions && toyService.getToyLabels().map(label => (
+                {/* {showLabelOptions && toyService.getToyLabels().map(label => (
                     <div key={label}>
                         <input
                             type="checkbox"
@@ -118,7 +118,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     </div>
                 ))}
 
-                <ToyButton size={'small'} func={toggleLabelOptions} txt={showLabelOptions ? "Hide Labels" : "Filter by Labels"} />
+                <ToyButton size={'small'} func={toggleLabelOptions} txt={showLabelOptions ? "Hide Labels" : "Filter by Labels"} /> */}
 
             </form>
 
