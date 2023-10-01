@@ -14,7 +14,7 @@ export function Home() {
                     <h4>Experience the Magic of Toys!</h4>
                     <p>At <span className="logo-clr">ToyJoy</span>, we believe that toys have the power to spark imagination, create memories, and bring joy to people of all ages. Explore our wide range of toys that cater to every interest and age group.</p>
                     <div className="card">
-                        <h3>Why ToyJoy?</h3>
+                        <h3>Why Toy<span className="logo-clr">Joy</span>?</h3>
                         <p>At ToyJoy, you can enjoy a wide variety of toys:</p>
                         <ul className="clean-list">
                             <li><span className="logo-clr">Unique</span>  and Innovative Toys</li>

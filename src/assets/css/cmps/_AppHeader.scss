@@ -6,8 +6,7 @@ header {
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 30px 15px;
-    padding-block-end: 3px;
+    padding: 25px 15px;
 }
 
 nav a {
@@ -22,6 +21,34 @@ nav a.active {
 
 .app-header h3 {
     color: #FFF6F4;
+}
+
+.user-info {
+
+    h4 {
+        color: $clr3;
+        display: inline;
+
+        span {
+            color: $clr2;
+        }
+    }
+
+    button {
+        display: inline;
+        background: $clr3;
+        padding: 3px;
+        border-color: $clr1;
+        border-radius: 4px;
+        color: $clr1;
+        margin-inline-start: 5px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    button:hover {
+        color: $clr2;
+    }
 }
 
 @media (max-width: 768px) {

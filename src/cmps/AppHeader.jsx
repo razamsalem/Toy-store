@@ -29,7 +29,7 @@ export function AppHeader() {
             </Link>
 
             {user && <section className="user-info">
-                <p>Hello {user.fullname}</p>
+                <h4>Hello <span>{user.fullname}</span></h4>
                 <button onClick={onLogout}>Logout</button>
             </section>}
             {!user && <section className="user-info">
