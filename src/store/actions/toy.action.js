@@ -1,5 +1,6 @@
 import { showSuccessMsg } from "../../services/event-bus.service.js"
 import { toyService } from "../../services/toy.service.js"
+import { reviewService } from "../../services/review.service.js"
 import { SET_TOYS, REMOVE_TOY, SET_IS_LOADING, UNDO_TOY, UPDATE_TOY, ADD_TOY } from "../reducers/toy.reducer.js"
 import { store } from "../store.js"
 
@@ -50,6 +51,15 @@ export async function saveToy(toy) {
         return toyToSave
     } catch (err) {
         console.log('Toy action -> Cannot save toy', err)
+        throw err
+    }
+}
+
+export async function loadReviews(filterBy = {}) {
+    try {
+        return await reviewService.query(filterBy)
+    } catch (err) {
+        console.log('Cannot loading reviews..', err)
         throw err
     }
 }

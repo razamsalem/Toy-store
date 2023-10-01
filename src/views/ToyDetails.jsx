@@ -2,25 +2,53 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 
 import { toyService } from "../services/toy.service.js"
-import { showErrorMsg } from "../services/event-bus.service.js"
+import { loadReviews } from "../store/actions/toy.action.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { reviewService } from "../services/review.service.js"
+import { ReviewList } from "../cmps/ReviewList.jsx"
+import { ReviewToy } from "../cmps/ReviewToy.jsx"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
+    const [reviews, setReviews] = useState(null)
     const { toyId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        loadToy()
+        onLoadToy()
+        onLoadReviews()
+
     }, [toyId])
 
-    async function loadToy() {
-      const desiredToy = await toyService.getById(toyId)
+    async function onLoadToy() {
+        const desiredToy = await toyService.getById(toyId)
         try {
             setToy(desiredToy)
         } catch (err) {
             console.log('Had issues in toy details ->', err)
             showErrorMsg('Oops cannot load toy')
             navigate('/')
+        }
+    }
+
+    async function onLoadReviews() {
+        try {
+            const reviews = await reviewService.query({ byToyId: toyId })
+            setReviews(reviews)
+        } catch (err) {
+            console.log(`error loading reviews in toyDetails: ${err.message}`)
+        }
+    }
+
+    async function onReviewToy(review) {
+        review.toyId = toyId
+
+        try {
+            await reviewService.add(review)
+            showSuccessMsg('Review added successfully')
+            onLoadReviews()
+        } catch (err) {
+            showErrorMsg('Please login to review')
         }
     }
 
@@ -42,6 +70,12 @@ export function ToyDetails() {
                 <img src="../../assets/img/user.png" alt="Toy image" />
             </div> */}
             </div>
+
+            <section className="reviews">
+                Reviews:
+                <ReviewList reviews={reviews} />
+                <ReviewToy onReviewToy={onReviewToy}/>
+            </section>
 
             <div className="btns">
                 <Link to="/toy">Back</Link>
