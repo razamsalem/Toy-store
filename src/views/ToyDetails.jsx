@@ -16,6 +16,7 @@ export function ToyDetails() {
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
     const navigate = useNavigate()
+    const defaultImgUrl = 'https://res.cloudinary.com/de2rdmsca/image/upload/v1696229330/no-image-symbol-missing-available-icon-gallery-vector-47533708_yv5p2x.jpg'
 
     useEffect(() => {
         onLoadToy()
@@ -62,8 +63,7 @@ export function ToyDetails() {
             <div className="toy-bio">
                 <div className="info">
                     <h1>{toy.name}</h1>
-                    {/* <img src="https://res.cloudinary.com/de2rdmsca/image/upload/v1696178312/Talking_Doll_d6ojir.png" alt="" /> */}
-                    <h3>Price: {toy.price}</h3>
+                    <img className="toy-img" src={toy.imgUrl ? toy.imgUrl : defaultImgUrl} alt="" />                    <h3>Price: {toy.price}</h3>
                     <h3>Related to: {toy.labels.join(', ')}</h3>
                     {toy.inStock ?
                         <h3><span className="positive">Currently in stock</span></h3> :

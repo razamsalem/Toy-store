@@ -20,6 +20,10 @@
     align-items: center;
     text-align: center;
     padding: 20px;
+
+    .toy-img {
+        max-width: 50%;
+    }
 }
 
 .toy-bio {
@@ -34,7 +38,7 @@
 }
 
 .info {
-    text-align: left;
+    text-align: center;
     width: 80%;
     padding: 10px;
 }

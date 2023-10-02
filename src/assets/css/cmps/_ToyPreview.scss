@@ -8,8 +8,13 @@
     width: calc(25% - 16px);
     display: inline-block;
     vertical-align: top;
+    .toy-img {
+        max-width: 80%;
+    }
+
 }
 
 .toy-preview-art>*:not(:first-child) {
     margin-block: 5px;
 }
+
