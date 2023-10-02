@@ -23,6 +23,12 @@ nav a.active {
     color: #FFF6F4;
 }
 
+.signup {
+    &:hover {
+        color: $clr2;
+    }
+}
+
 .user-info {
 
     h4 {
