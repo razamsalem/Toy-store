@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from 'google-map-react';
-import { API_KEY } from "../../secret";
+// import  API_KEY  from "../../.env";
 
 const ToyJoyMarker = ({ text }) => (
   <div style={{ width: '70px', height: '70px', textAlign: 'center', background: '#EE9322', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
@@ -21,7 +21,7 @@ export function GoogleMap({ centerMap }) {
   const [center, setCenter] = useState({ lat: 32.0853, lng: 34.7818 })
 
   useEffect(() => {
-    setCenter(centerMap);
+    setCenter(centerMap)
   }, [centerMap]);
 
   const options = {
@@ -31,7 +31,7 @@ export function GoogleMap({ centerMap }) {
   return (
     <div style={{ height: '40vh', width: '80%'}}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: API_KEY }}
+        bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_API_KEY }}
         center={center}
         defaultZoom={9}
         options={options}
